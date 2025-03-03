@@ -9,9 +9,9 @@ function App() {
             <div>
                 <Navigation />
                 <Routes>
-                    <Route path="/" exact component={HomePage} />
-                    <Route path="/product/:id" component={ProductPage} />
-                    <Route path="/cart" component={CartPage} />
+                    <Route path="/" exact element={HomePage} />
+                    <Route path="/product/:id" element={ProductPage} />
+                    <Route path="/cart" element={CartPage} />
                 </Routes>
             </div>
         </BrowserRouter>
