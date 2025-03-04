@@ -1,17 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import { Box, Flex, Link } from '@chakra-ui/react';
 
 export default function Navigation() {
     return (
-        <nav>
-            <ul>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <Link to="/cart">Shopping Cart</Link>
-                </li>
-            </ul>
-        </nav>
+        <Box bg="teal.500" p={4}>
+            <Flex as="nav" justify="space-between" align="center">
+                <Link as={RouterLink} to="/" color="white" fontWeight="bold" _hover={{ textDecoration: 'underline' }}>
+                    Home
+                </Link>
+                <Link as={RouterLink} to="/cart" color="white" fontWeight="bold" _hover={{ textDecoration: 'underline' }}>
+                    Shopping Cart
+                </Link>
+            </Flex>
+        </Box>
     );
-};
+}
