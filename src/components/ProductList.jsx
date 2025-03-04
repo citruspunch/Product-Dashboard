@@ -1,22 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import { Box, Button, Heading, List, ListItem, Text, Link } from '@chakra-ui/react';
 
 export default function ProductList({ products, onAddToCart }) {
     return (
-        <div>
-            <h2>Product List</h2>
-            <ul>
+        <Box p={4}>
+            <List.Root gap={4}>
                 {products.map(product => (
-                    <li key={product.id}>
-                        <h3>
-                            <Link to={`/product/${product.id}`}>{product.name}</Link>
-                        </h3>
-                        <p>{product.description}</p>
-                        <p>Price: ${product.price}</p>
-                        <button onClick={() => onAddToCart(product)}>Add to Cart</button>
-                    </li>
+                    <ListItem key={product.id} p={4} borderWidth="1.5px" borderRadius="lg">
+                        <Heading size="xl" fontWeight="semibold" fontFamily="Poppins">
+                            <Link as={RouterLink} to={`/product/${product.id}`} color="teal.500" _hover={{ textDecoration: 'underline' }} >
+                                {product.name}
+                            </Link>
+                        </Heading>
+                        <Text fontFamily="Poppins">{product.description}</Text>
+                        <Text fontFamily="Poppins" fontWeight="bold">Price: ${product.price}</Text>
+                        <Button fontFamily="Poppins" mt={2} colorScheme="teal" onClick={() => onAddToCart(product)}>Add to Cart</Button>
+                    </ListItem>
                 ))}
-            </ul>
-        </div>
+            </List.Root>
+        </Box>
     );
-};
+}
