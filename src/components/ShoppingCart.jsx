@@ -1,25 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 
-export default function ShoppingCart() {
-    const [cartItems, setCartItems] = useState([]);
-
-    const removeItem = (itemId) => {
-        setCartItems(cartItems.filter(item => item.id !== itemId));
-    };
-
-    const updateQuantity = (itemId, quantity) => {
-        setCartItems(cartItems.map(item => 
-            item.id === itemId ? { ...item, quantity: quantity } : item
-        ));
-    };
-
-    const getTotalAmount = () => {
-        let totalAmount = 0;
-        cartItems.forEach(item => {
-            totalAmount += item.price * item.quantity;
-        });
-        return totalAmount;
-    }
+export default function ShoppingCart({ cartItems, removeItem, updateQuantity, getTotal }) {
+    
 
     return (
         <div>
@@ -42,7 +24,7 @@ export default function ShoppingCart() {
                     ))}
                 </ul>
             )}
-            <h3>Total: ${getTotalAmount().toFixed(2)}</h3>
+            <h3>Total: ${getTotal().toFixed(2)}</h3>
         </div>
     );
 };
