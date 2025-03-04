@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ProductList({ products, onAddToCart }) {
     return (
@@ -7,7 +8,9 @@ export default function ProductList({ products, onAddToCart }) {
             <ul>
                 {products.map(product => (
                     <li key={product.id}>
-                        <h3>{product.name}</h3>
+                        <h3>
+                            <Link to={`/product/${product.id}`}>{product.name}</Link>
+                        </h3>
                         <p>{product.description}</p>
                         <p>Price: ${product.price}</p>
                         <button onClick={() => onAddToCart(product)}>Add to Cart</button>
